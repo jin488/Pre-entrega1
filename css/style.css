@@ -1,0 +1,25 @@
+body {
+    font-family: monospace;
+    background-image: url(https://laverdadonline.com/wp-content/uploads/2023/03/ruleta-juego-casino-1.jpg);
+    background-size: 100%;
+}
+
+h1 {
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    color: rgb(247, 247, 33);
+    border: 1px rgb(255, 17, 17);
+    border-style:dashed;
+    text-transform:uppercase;
+}
+
+h2 {
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    color: orangered;
+    border-style:dashed;
+    text-transform:uppercase;
+    margin-top: 300px;
+}
