@@ -1,12 +1,15 @@
-//Resultado de la ruleta
+//Resultados de la ruleta
+
+let resultados = [];
+
+// Funcion para simular el uso de una ruleta de casino
 
 function color(rojo, negro, verde) {
 
-    // Un número aleatorio entre 1 y 36
+    // Un número aleatorio entre 0 y 36
 
     const numeroAleatorio = Math.floor(Math.random() * 37);
-    console.log(numeroAleatorio);
-    
+
     let numerosDeLaRuleta = numeroAleatorio;
 
     switch (numerosDeLaRuleta) {
@@ -123,14 +126,17 @@ function color(rojo, negro, verde) {
             break;
     }
 
+    resultados.push(numerosDeLaRuleta);
 
 }
 
+// Opcion de iniciar la ruleta
+
 while (true) {
     let opcion = prompt(`Quieres tirar?
-Si      No `).toLowerCase();
+Si ✅     No ❌`).toLowerCase();
     if (opcion === "si") {
-        color(" Rojo", " Negro", " Verde");
+        color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩");
     } else if (opcion === "no") {
         break;
     } else {
@@ -138,6 +144,16 @@ Si      No `).toLowerCase();
     }
 }
 
+// funcion para mostrar los resultados de la ruleta
+
+function mostrarResultados() {
+    console.log("Ultimos Resultados:");
+    for (let i = 0; i < resultados.length; i++) {
+        console.log((i + 1) + ". " + resultados[i]);
+    }
+}
+
+mostrarResultados()
 
 
 
