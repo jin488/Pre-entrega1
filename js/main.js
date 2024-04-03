@@ -1,20 +1,18 @@
-// Un número aleatorio entre 1 y 36
-const numeroAleatorio = Math.floor(Math.random() * 36) + 1;
-console.log(numeroAleatorio);
-
-// if (numeroAleatorio == 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36) {
-//     alert("El numero que salio en la Ruleta es: " + numeroAleatorio + rojo);
-
-// }
-
-
 //Resultado de la ruleta
 
-function color(rojo, negro) {
+function color(rojo, negro, verde) {
 
-    let diaDeLaSemana = numeroAleatorio;
+    // Un número aleatorio entre 1 y 36
 
-    switch (diaDeLaSemana) {
+    const numeroAleatorio = Math.floor(Math.random() * 37);
+    console.log(numeroAleatorio);
+    
+    let numerosDeLaRuleta = numeroAleatorio;
+
+    switch (numerosDeLaRuleta) {
+        case 0:
+            alert("El numero que salio en la Ruleta es: " + numeroAleatorio + verde);
+            break;
         case 1:
             alert("El numero que salio en la Ruleta es: " + numeroAleatorio + negro);
             break;
@@ -128,7 +126,7 @@ function color(rojo, negro) {
 
 }
 
-color(" Rojo 🟥🟥", " Negro ⬜⬜");
+color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩")
 
 
 
