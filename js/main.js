@@ -1,6 +1,39 @@
+//! PROXIMAMENTE
+// let usuario = prompt("Ingrese su nombre");
+
+// let valorApuesta = prompt("Ingrese la cantidad que va a apostar en cada numero");
+
+
+// let apuestas = [
+
+//     {
+//         nombre: usuario,
+//         apuesta: valorApuesta,
+//     }
+//     ];
+
+// function numeroApostado() {
+//     const numerosConApuestas = prompt("Ingrese el numero que quiere apostar");
+//     apuestas.push(numerosConApuestas);
+// } 
+
+// while (true) {
+//     let pregunta = prompt(`Quieres apostar?
+// Si ✅     No ❌`).toLowerCase();
+//     if (pregunta === "si") {
+//         numeroApostado();
+//     } else if (pregunta === "no") {
+//         break;
+//     } else {
+//         alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
+//     }
+// }
+
+// console.log(apuestas)
+
 //Resultados de la ruleta
 
-let resultados = [];
+let resultados = []; 
 
 // Funcion para simular el uso de una ruleta de casino
 
