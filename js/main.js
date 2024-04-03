@@ -126,7 +126,17 @@ function color(rojo, negro, verde) {
 
 }
 
-color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩")
+while (true) {
+    let opcion = prompt(`Quieres tirar?
+Si      No `).toLowerCase();
+    if (opcion === "si") {
+        color(" Rojo", " Negro", " Verde");
+    } else if (opcion === "no") {
+        break;
+    } else {
+        alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
+    }
+}
 
 
 
