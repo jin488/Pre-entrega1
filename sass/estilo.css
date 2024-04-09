@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+.bodyIndex {
+  background-image: url(https://laverdadonline.com/wp-content/uploads/2023/03/ruleta-juego-casino-1.jpg);
+  background-size: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.titulo {
+  color: rgb(243, 8, 8);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 75px;
+  border: 3px dashed #F1AD02;
+  border-radius: 100px;
+  width: 75%;
+  padding: 25px;
+}
+
+.titulo1 {
+  color: rgb(243, 8, 8);
+  display: flex;
+  justify-content: flex-start;
+  font-size: 65px;
+  border: 3px dashed #F1AD02;
+  border-radius: 100px;
+  width: 75%;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+.anuncio {
+  display: flex;
+  justify-content: end;
+}
+
+.navbar {
+  background-image: url(../img/header.jpg);
+  background-size: cover;
+}
+
+.cajaPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  text-transform: unset;
+}
+
+.pagina {
+  color: #ced100;
+  text-decoration: none;
+  margin: 100px;
+  padding: 40px;
+  font-size: 30px;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.pagina1 {
+  color: rgb(250, 21, 21);
+  text-decoration: none;
+  margin: 100px;
+  padding: 40px;
+  font-size: 30px;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.pagina2 {
+  color: rgb(4, 168, 4);
+  text-decoration: none;
+  margin: 100px;
+  padding: 40px;
+  font-size: 30px;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.blackJack {
+  background-image: url(https://i.pinimg.com/originals/04/52/65/04526588a0a67bc8db7126156a9b27bf.jpg);
+  background-size: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tituloB {
+  color: rgb(4, 151, 4);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 75px;
+  border: 3px dashed #ffffff;
+  border-radius: 100px;
+  width: 75%;
+  padding: 15px;
+  padding-right: 45px;
+}
+
+.tituloB1 {
+  color: rgb(4, 151, 4);
+  display: flex;
+  justify-content: flex-start;
+  font-size: 65px;
+  border: 3px dashed #ffffff;
+  border-radius: 100px;
+  width: 75%;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+.apuestasDeportivas {
+  background-image: url(https://www.rumbosdelperu.com/wp-content/uploads/2021/02/puedes-ganarte-la-vida-con-las-apuestas-deportivas-.jpg);
+  background-size: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tituloA {
+  color: rgb(241, 238, 16);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 75px;
+  border: 3px dashed #fd1a1a;
+  border-radius: 100px;
+  width: 75%;
+  padding: 15px;
+  padding-right: 45px;
+}
+
+.tituloA1 {
+  color: rgb(241, 238, 16);
+  display: flex;
+  justify-content: flex-start;
+  font-size: 65px;
+  border: 3px dashed #fd1a1a;
+  border-radius: 100px;
+  width: 75%;
+  padding: 25px;
+  margin-top: 25px;
+}/*# sourceMappingURL=estilo.css.map */

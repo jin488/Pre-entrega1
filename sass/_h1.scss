@@ -1,0 +1,27 @@
+.titulo {
+    color: rgb(243, 8, 8);
+    display: flex;
+    justify-content: flex-end;
+    font-size: 75px;
+    border: 3px dashed #F1AD02;
+    border-radius: 100px;
+    width: 75%;
+    padding: 25px;
+}
+
+.titulo1 {
+    color: rgb(243, 8, 8);
+    display: flex;
+    justify-content: flex-start;
+    font-size: 65px;
+    border: 3px dashed #F1AD02;
+    border-radius: 100px;
+    width: 75%;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.anuncio {
+    display: flex;
+    justify-content: end;
+}

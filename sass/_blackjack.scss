@@ -1,0 +1,30 @@
+.blackJack {
+    background-image: url(https://i.pinimg.com/originals/04/52/65/04526588a0a67bc8db7126156a9b27bf.jpg); 
+    background-size: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tituloB {
+    color: rgb(4, 151, 4);
+    display: flex;
+    justify-content: flex-end;
+    font-size: 75px;
+    border: 3px dashed #ffffff;
+    border-radius: 100px;
+    width: 75%;
+    padding: 15px;
+    padding-right: 45px;
+}
+
+.tituloB1 {
+    color: rgb(4, 151, 4);
+    display: flex;
+    justify-content: flex-start;
+    font-size: 65px;
+    border: 3px dashed #ffffff;
+    border-radius: 100px;
+    width: 75%;
+    padding: 25px;
+    margin-top: 25px;
+}

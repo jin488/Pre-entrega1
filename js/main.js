@@ -1,4 +1,4 @@
-//! PROXIMAMENTE
+//! Proximamente
 // let usuario = prompt("Ingrese su nombre");
 
 // let valorApuesta = prompt("Ingrese la cantidad que va a apostar en cada numero");
@@ -33,7 +33,8 @@
 
 //Resultados de la ruleta
 
-let resultados = []; 
+let resultados = [];
+
 
 // Funcion para simular el uso de una ruleta de casino
 
@@ -159,8 +160,14 @@ function color(rojo, negro, verde) {
             break;
     }
 
-    resultados.push(numerosDeLaRuleta);
+    let resultado = {
 
+        numero: numeroAleatorio,
+
+        color: (numeroAleatorio % 2 == 0) ? "rojo" : "negro"
+    };
+
+    resultados.push(resultado);
 }
 
 // Opcion de iniciar la ruleta
@@ -177,16 +184,7 @@ Si ✅     No ❌`).toLowerCase();
     }
 }
 
-// funcion para mostrar los resultados de la ruleta
-
-function mostrarResultados() {
-    console.log("Ultimos Resultados:");
-    for (let i = 0; i < resultados.length; i++) {
-        console.log((i + 1) + ". " + resultados[i]);
-    }
-}
-
-mostrarResultados()
+console.log(resultados)
 
 
 
