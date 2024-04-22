@@ -1,40 +1,50 @@
-//! Proximamente
-// let usuario = prompt("Ingrese su nombre");
+const btnapuesta = document.querySelector("#apostar");
 
-// let valorApuesta = prompt("Ingrese la cantidad que va a apostar en cada numero");
+btnapuesta.addEventListener("click", apostar)
+
+let apuestas = [];
+
+function apostar() {
+
+    while (true) {
+        let pregunta = `Quieres apostar?
+        Si ✅     No ❌`
+        pregunta.toLowerCase();
+        if (pregunta === "si") {
+
+            const apuestaRealizada = {
+                nombre: prompt("Escribe tu nombre"),
+                apuesta:  prompt("Cuanto quieres apostar"),
+                numero: prompt("A que numero queres apostar")
+            };
+
+            apuestas.push(apuestaRealizada);
+            funcionApuesta(apuestaRealizada);
+        } else if (pregunta === "no") {
+            break;
+        } else {
+            alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
+        }
+    }
+    console.log(apuestas)
+}
 
 
-// let apuestas = [
+function funcionApuesta( {apuesta, numero} ) {
 
-//     {
-//         nombre: usuario,
-//         apuesta: valorApuesta,
-//     }
-//     ];
+    // apuesta entre 0 y 36 para la ruleta.
+    if (numero < 0 || numero > 36) {
+        alert ("La apuesta no es válida. Debe ser un número entre 0 y 36.");
+        return;
+    }
 
-// function numeroApostado() {
-//     const numerosConApuestas = prompt("Ingrese el numero que quiere apostar");
-//     apuestas.push(numerosConApuestas);
-// } 
-
-// while (true) {
-//     let pregunta = prompt(`Quieres apostar?
-// Si ✅     No ❌`).toLowerCase();
-//     if (pregunta === "si") {
-//         numeroApostado();
-//     } else if (pregunta === "no") {
-//         break;
-//     } else {
-//         alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
-//     }
-// }
-
-// console.log(apuestas)
-
-//Resultados de la ruleta
+    if (apuesta <= 0) {
+        alert ("La cantidad apostada debe ser mayor que cero.");
+        return;
+    }
+}
 
 let resultados = [];
-
 
 // Funcion para simular el uso de una ruleta de casino
 
@@ -172,19 +182,47 @@ function color(rojo, negro, verde) {
 
 // Opcion de iniciar la ruleta
 
-while (true) {
-    let opcion = prompt(`Quieres tirar?
-Si ✅     No ❌`).toLowerCase();
-    if (opcion === "si") {
-        color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩");
-    } else if (opcion === "no") {
-        break;
-    } else {
-        alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
-    }
+const btnRuleta = document.querySelector("#tirar-ruleta");
+const tirada = document.querySelector("#tirada");
+
+btnRuleta.addEventListener("click", tirarRuleta)
+btnRuleta.addEventListener("click", tirandoLaRuleta)
+
+function tirandoLaRuleta(e) {
+    e.preventDefault();
+
+    document.body.classList.toggle("mensaje-sino");
+    const div = document.createElement("div");
+    div.classList.remove("d-none");
+    div.classList.add("d-none");
+    div.classList.add("fondo");
+    div.innerHTML = `
+    <p class="texto">Quieres tirar?</p>
+    <button class="btn-si"> SI </button>
+    <button class="btn-no"> NO </button>
+    `;
+    tirada.append(div);
 }
 
-console.log(resultados)
+
+function tirarRuleta() {
+    while (true) {
+        let opcion = prompt(`Quieres tirar?
+    Si ✅     No ❌`).toLowerCase();
+        if (opcion === "si") {
+            color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩");
+        } else if (opcion === "no") {
+            break;
+        } else {
+            alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
+        }
+    }
+
+    console.log(resultados)
+}
+
+
+
 
 
 
