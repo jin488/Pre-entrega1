@@ -2,6 +2,8 @@ const btnapuesta = document.querySelector("#apostar");
 
 btnapuesta.addEventListener("click", apostar)
 
+
+// FUNCION PARA APOSTAR: AUN SIN DOM
 let apuestas = [];
 
 function apostar() {
@@ -47,6 +49,7 @@ function funcionApuesta({ apuesta, numero }) {
 let resultados = [];
 
 // Funcion para simular el uso de una ruleta de casino
+// DOM AGREGADO 
 
 function color(rojo, negro, verde) {
 
@@ -178,9 +181,10 @@ function color(rojo, negro, verde) {
     };
 
     resultados.push(resultado);
+    console.log(resultados)
 }
 
-// Opcion de iniciar la ruleta
+// Opcion de iniciar la ruleta con DOM
 
 const btnRuleta = document.querySelector("#tirar-ruleta");
 const tirada = document.querySelector("#tirada");
@@ -208,12 +212,41 @@ window.addEventListener("click", function (event) {
 
 noBtn.addEventListener("click", cerrarPregunta);
 
-siBtn.addEventListener("click", function() {
+siBtn.addEventListener("click", function () {
     color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩");
+    generarNumeros();
     cerrarPregunta();
-  });
+});
 
-console.log(resultados)
+
+function generarNumeros() {
+    let abajo = document.getElementById("abajo");
+    abajo.innerHTML = "";
+
+    resultados.forEach( (number) => {
+        let li = document.createElement("li");
+        li.textContent = number.numero;
+        abajo.appendChild(li)
+    })
+}
+
+function mostrarResultados() {
+    let masAbajo = document.getElementById("masAbajo");
+    abajo.innerHTML = "";
+
+    resultados.forEach( (string) => {
+        let li = document.createElement("li");
+        li.textContent = string.color;
+        masAbajo.appendChild(li)
+    })
+}
+
+localStorage.setItem(resultados[0, 1])
+
+
+
+
+
 
 
 

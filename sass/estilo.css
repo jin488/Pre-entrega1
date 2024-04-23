@@ -80,9 +80,19 @@
   border: 1px solid #F1AD02;
   border-radius: 5px;
   width: 700px;
-  height: 500px;
+  height: 300px;
   padding-top: 3rem;
   font-size: 25px;
+}
+
+.mostrarNumero {
+  list-style: none;
+  color: white;
+}
+
+.mostrarResultado {
+  list-style: none;
+  color: white;
 }
 
 .numero {
@@ -93,7 +103,7 @@
   border: 1px solid #F1AD02;
   border-radius: 5px;
   width: 700px;
-  height: 500px;
+  height: 300px;
   padding-top: 3rem;
   text-transform: uppercase;
   font-size: 50px;
@@ -104,7 +114,7 @@
   position: fixed;
   overflow: auto;
   z-index: 1;
-  left: 35%;
+  left: 30%;
   top: 30%;
   width: 100%;
   height: 100%;
