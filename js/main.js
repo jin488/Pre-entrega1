@@ -57,16 +57,134 @@ function color() {
 
     const numeroAleatorio = Math.floor(Math.random() * 37);
 
+    numerosDeLaRuleta = numeroAleatorio
+
+    switch (numerosDeLaRuleta) {
+        case 0:
+            numerosDeLaRuleta = " verde";
+            break;
+        case 1:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 2:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 3:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 4:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 5:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 6:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 7:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 8:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 9:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 10:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 11:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 12:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 13:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 14:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 15:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 16:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 17:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 18:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 19:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 20:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 21:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 22:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 23:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 24:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 25:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 26:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 27:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 28:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 29:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 30:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 31:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 32:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 33:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 34:
+            numerosDeLaRuleta = " rojo";
+            break;
+        case 35:
+            numerosDeLaRuleta = " negro";
+            break;
+        case 36:
+            numerosDeLaRuleta = " rojo";
+            break;
+    }
+
     let resultado = {
 
         numero: numeroAleatorio,
 
-        color: (numeroAleatorio % 2 == 0) ? "rojo" : "negro"
+        rnv: numerosDeLaRuleta
     };
 
     resultados.push(resultado);
-    console.log(resultados)
-}
+    console.log(resultados);    
+
+};
+
 
 // Opcion de iniciar la ruleta con DOM
 
@@ -97,47 +215,76 @@ window.addEventListener("click", function (event) {
 noBtn.addEventListener("click", cerrarPregunta);
 
 siBtn.addEventListener("click", function () {
-    color(" Rojo 🟥🟥", " Negro ⬜⬜", " Verde 🟩🟩");
+    color();
     generarNumeros();
+    mostrarResultados();
     cerrarPregunta();
 });
 
+// siBtn.addEventListener("keyup", function () {
+//     color();
+//     generarNumeros();
+//     cerrarPregunta();
+// });
+
 
 function generarNumeros() {
-    let abajo = document.getElementById("abajo");
-    abajo.innerHTML = "";
 
-    resultados.forEach( (number) => {
-        let li = document.createElement("li");
-        const datosJSON =JSON.stringify(number.color);
+    let todoAbajo = document.getElementById("abajo");
+
+    resultados.forEach((number) => {
+
+        const datosJSON = JSON.stringify(number.rnv);
         localStorage.setItem("color", datosJSON)
         const colorEnLocalStorage = localStorage.getItem("color");
         const colorObjeto = JSON.parse(colorEnLocalStorage)
+
+        let li = document.createElement("li");
+        todoAbajo.innerHTML = ""
         li.textContent = number.numero + colorObjeto;
-        abajo.appendChild(li)
-    })
-}
+        todoAbajo.appendChild(li);
+
+        
+    
+        if (colorObjeto == " rojo") {
+        document.body.classList.add("rojo");
+        document.body.classList.remove("negro");
+        document.body.classList.remove("verde");
+        }
+
+        if (colorObjeto == " negro") {
+            document.body.classList.add("negro");
+            document.body.classList.remove("rojo");
+            document.body.classList.remove("verde");
+        }
+
+        if (colorObjeto == " verde") {
+            document.body.classList.add("verde");
+            document.body.classList.remove("rojo");
+            document.body.classList.remove("negro");
+        }
+});
+};
+
 
 function mostrarResultados() {
     let masAbajo = document.getElementById("masAbajo");
-    abajo.innerHTML = "";
+    masAbajo.innerHTML = "";
 
-    resultados.forEach( (string) => {
+    resultados.forEach( (number) => {
+
+        const datosJSON =JSON.stringify(number.numero);
+        localStorage.setItem("numero", datosJSON)
+        const numeroEnLocalStorage = localStorage.getItem("numero");
+        const numeroObjeto = JSON.parse(numeroEnLocalStorage)
+
         let li = document.createElement("li");
-        li.textContent = string.color;
+        li.classList.toggle("listaResultados")
+        li.innerHTML = ""
+        li.textContent = numeroObjeto
         masAbajo.appendChild(li)
     })
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

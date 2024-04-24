@@ -1,7 +1,7 @@
 .orden {
-display: flex;
-justify-content: space-around;
-align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .titulo {
@@ -69,38 +69,89 @@ align-items: center;
 .resultados {
     display: inline-block;
     text-align: center;
-    background-color: rgb(209, 25, 25);
-    color: white;
-    border: 1px solid #F1AD02;
-    border-radius: 5px;
-    width: 700px;
-    height: 300px;
-    padding-top: 3rem;
-    font-size: 25px;
-}
-
-.mostrarNumero {
-    list-style: none;
-    color: white;
-}
-
-.mostrarResultado {
-    list-style: none;
-    color: white;
-}
-
-.numero {
-    display: inline-block;
-    text-align: center;
-    background-color: rgb(209, 25, 25);
-    color: white;
-    border: 1px solid #F1AD02;
+    background-color: #F1AD02;
+    color: black;
+    border: 1px solid #000000;
     border-radius: 5px;
     width: 700px;
     height: 300px;
     padding-top: 3rem;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 35px;
+    .unTexto {
+        padding-top: 0.5px;
+        margin-top: 0.5px;
+    }
+    .mostrarNumero {
+        list-style: none;
+        display: inline        
+    }
+}
+
+.listaResultados {
+    display: inline-block;
+    margin: 0px;
+    width: 100px;      
+}
+
+.mostrarResultado {
+    list-style: none;
+    color: black;
+}
+
+
+.rojo {
+    .numero {
+        display: inline-block;
+        text-align: center;
+        background-color: #b91010;
+        color: white;
+        border: 1px solid #F1AD02;
+        border-radius: 5px;
+        width: 700px;
+        height: 300px;
+        padding-top: 3rem;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+}
+
+.negro {
+    .numero {
+        display: inline-block;
+        text-align: center;
+        background-color: #000000;
+        color: white;
+        border: 1px solid #F1AD02;
+        border-radius: 5px;
+        width: 700px;
+        height: 300px;
+        padding-top: 3rem;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+}
+
+.verde {
+    .numero {
+        display: inline-block;
+        text-align: center;
+        background-color: #22a310;
+        color: white;
+        border: 1px solid #F1AD02;
+        border-radius: 5px;
+        width: 700px;
+        height: 300px;
+        padding-top: 3rem;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }
 
 .btn-tirar {
@@ -130,13 +181,14 @@ align-items: center;
         .texto {
             display: flex;
             justify-content: center;
-            font-size: 40px; 
-            font-weight:bold;
+            font-size: 40px;
+            font-weight: bold;
             font-style: oblique;
             text-transform: uppercase;
             width: 600px;
             height: 200px;
         }
+
         .btn-si {
             position: relative;
             bottom: 30px;
@@ -148,11 +200,11 @@ align-items: center;
             border: 4px solid rgb(209, 25, 25);
             border-radius: 120px;
         }
-        
+
         .btn-no {
             position: relative;
             bottom: 67px;
-            left: 20rem; 
+            left: 20rem;
             background-color: #F1AD02;
             width: 175px;
             height: 50px;
@@ -160,13 +212,13 @@ align-items: center;
             border: 4px solid rgb(209, 25, 25);
             border-radius: 120px;
         }
-        
+
         .btn-si:hover {
             color: white;
             background-color: rgb(209, 25, 25);
             border: 4px solid #F1AD02;
         }
-        
+
         .btn-no:hover {
             color: white;
             background-color: rgb(209, 25, 25);
