@@ -1,35 +1,69 @@
-const btnapuesta = document.querySelector("#apostar");
+//*** MODO DE APOSTAR ***//
 
-btnapuesta.addEventListener("click", apostar)
+const btnApuestas = document.querySelector("#apostar");
+const btnApuesta = document.querySelector("#apuesta");
 
+let moduloPreguntaApuesta = document.getElementById("apuesta");
 
-// FUNCION PARA APOSTAR: AUN SIN DOM
-let apuestas = [];
+//*** QUIERES APOSTAR? ***//
 
-function apostar() {
+btnApuestas.addEventListener("click", abrirPreguntaApuesta)
 
-    while (true) {
-        let pregunta = `Quieres apostar?
-        Si ✅     No ❌`
-        pregunta.toLowerCase();
-        if (pregunta === "si") {
-
-            const apuestaRealizada = {
-                nombre: prompt("Escribe tu nombre"),
-                apuesta: prompt("Cuanto quieres apostar"),
-                numero: prompt("A que numero queres apostar")
-            };
-
-            apuestas.push(apuestaRealizada);
-            funcionApuesta(apuestaRealizada);
-        } else if (pregunta === "no") {
-            break;
-        } else {
-            alert("Opción no válida. Por favor, ingrese 'Sí' o 'No'.");
-        }
-    }
-    console.log(apuestas)
+function abrirPreguntaApuesta() {
+    document.body.classList.add("mensaje-sinoApuesta");
+    moduloPreguntaApuesta.style.display = "block";
 }
+
+
+function cerrarPreguntaApuesta() {
+    moduloPreguntaApuesta.style.display = "none";
+    document.body.classList.add("mensaje-sinoApuesta");
+}
+
+window.addEventListener("click", function (event) {
+    if (event.target === moduloPreguntaApuesta) {
+        cerrarPreguntaApuesta();
+    }
+});
+
+
+let siBtnApuesta = document.getElementById("siBtnApuesta");
+let noBtnApuesta = document.getElementById("noBtnApuesta");
+
+noBtnApuesta.addEventListener("click", cerrarPreguntaApuesta);
+
+siBtnApuesta.addEventListener("click", function () {
+    inputCuantoApuestas();
+    cerrarPreguntaApuesta();
+});
+
+//*** CUANTO QUIERES APOSTAR? ***//
+
+const cantidadApuesta = document.querySelector("#inputApuesta");
+let quieresApostar = document.getElementById("inputApuesta");
+
+
+function inputCuantoApuestas() {
+    document.body.classList.add("mensaje-sinoInput");
+    quieresApostar.style.display = "block";
+}
+
+const escribirEnForm = document.querySelector("#textoForm");
+const escribirEnInput = document.querySelector("#dineroDeApuesta");
+
+escribirEnForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    
+    const valorJSON = JSON.stringify(arrayLista);
+    localStorage.setItem("lista-numeros", datoJSON)
+    const arrayEnLocalStorage = localStorage.getItem("lista-numeros")
+    const numeros123 = JSON.parse(arrayEnLocalStorage)
+
+    console.log(escribirEnInput.value)
+    escribirEnForm.reset();
+
+})
 
 
 function funcionApuesta({ apuesta, numero }) {
@@ -180,6 +214,7 @@ function color() {
         rnv: numerosDeLaRuleta
     };
 
+    arrayLista.push(" " + resultado.numero)
     resultados.push(resultado);
     console.log(resultados);    
 
@@ -221,12 +256,6 @@ siBtn.addEventListener("click", function () {
     cerrarPregunta();
 });
 
-// siBtn.addEventListener("keyup", function () {
-//     color();
-//     generarNumeros();
-//     cerrarPregunta();
-// });
-
 
 function generarNumeros() {
 
@@ -267,24 +296,34 @@ function generarNumeros() {
 };
 
 
+let arrayLista = [];
+
 function mostrarResultados() {
     let masAbajo = document.getElementById("masAbajo");
-    masAbajo.innerHTML = "";
+    
+        
+    arrayLista.forEach( () => {
 
-    resultados.forEach( (number) => {
 
-        const datosJSON =JSON.stringify(number.numero);
-        localStorage.setItem("numero", datosJSON)
-        const numeroEnLocalStorage = localStorage.getItem("numero");
-        const numeroObjeto = JSON.parse(numeroEnLocalStorage)
+        const datoJSON = JSON.stringify(arrayLista);
+        localStorage.setItem("lista-numeros", datoJSON)
+        const arrayEnLocalStorage = localStorage.getItem("lista-numeros")
+        const numeros123 = JSON.parse(arrayEnLocalStorage)
+        
+        masAbajo.innerHTML = "";
+
+        if (arrayLista.length > 10) {
+            arrayLista.shift();
+        }
 
         let li = document.createElement("li");
-        li.classList.toggle("listaResultados")
-        li.innerHTML = ""
-        li.textContent = numeroObjeto
-        masAbajo.appendChild(li)
+        li.classList.toggle("listaResultados");
+        li.textContent = numeros123
+        masAbajo.appendChild(li);
+
     })
 }
+
 
 
 

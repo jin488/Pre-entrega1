@@ -95,12 +95,16 @@
 }
 
 .listaResultados {
-  display: inline-block;
-  margin: 0px;
+  display: inline;
+  margin: 100px;
   width: 100px;
 }
 
 .mostrarResultado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   color: black;
 }
@@ -212,6 +216,149 @@ ul {
   border: 4px solid #F1AD02;
 }
 .mensaje-sino .fondo .btn-no:hover {
+  color: white;
+  background-color: rgb(209, 25, 25);
+  border: 4px solid #F1AD02;
+}
+
+.btn-apuesta {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  z-index: 1;
+  left: 30%;
+  top: 30%;
+  width: 100%;
+  height: 100%;
+}
+
+.mensaje-sinoApuesta .fondoA {
+  transition: background-color 0.5s, color 0.5s;
+  background-color: rgb(10, 88, 10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  height: 300px;
+  border-style: dashed;
+  border: 20px inset #F1AD02;
+}
+.mensaje-sinoApuesta .fondoA .textoA {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  font-style: oblique;
+  text-transform: uppercase;
+  width: 600px;
+  height: 200px;
+}
+.mensaje-sinoApuesta .fondoA .btnA-si {
+  position: relative;
+  bottom: 30px;
+  left: 5rem;
+  background-color: #F1AD02;
+  width: 175px;
+  height: 50px;
+  cursor: pointer;
+  border: 4px solid rgb(209, 25, 25);
+  border-radius: 120px;
+}
+.mensaje-sinoApuesta .fondoA .btnA-no {
+  position: relative;
+  bottom: 67px;
+  left: 20rem;
+  background-color: #F1AD02;
+  width: 175px;
+  height: 50px;
+  cursor: pointer;
+  border: 4px solid rgb(209, 25, 25);
+  border-radius: 120px;
+}
+.mensaje-sinoApuesta .fondoA .btnA-si:hover {
+  color: white;
+  background-color: rgb(209, 25, 25);
+  border: 4px solid #F1AD02;
+}
+.mensaje-sinoApuesta .fondoA .btnA-no:hover {
+  color: white;
+  background-color: rgb(209, 25, 25);
+  border: 4px solid #F1AD02;
+}
+
+.valorApuesta {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  z-index: 1;
+  left: 30%;
+  top: 30%;
+  width: 100%;
+  height: 100%;
+}
+
+.mensaje-sinoInput .fondoInput {
+  transition: background-color 0.5s, color 0.5s;
+  background-color: rgb(10, 88, 10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  height: 300px;
+  border-style: dashed;
+  border: 20px inset #F1AD02;
+}
+.mensaje-sinoInput .fondoInput .textoInput {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  font-style: oblique;
+  text-transform: uppercase;
+  width: 600px;
+  height: 200px;
+}
+.mensaje-sinoInput .fondoInput .formulario {
+  position: relative;
+  bottom: 60px;
+  left: 7rem;
+}
+.mensaje-sinoInput .fondoInput .escribir {
+  border: 2px solid #F1AD02;
+  border-radius: 20px;
+  padding: 0.5rem;
+  width: 370px;
+  height: 25px;
+}
+.mensaje-sinoInput .fondoInput .btnI-si {
+  position: relative;
+  top: 5rem;
+  bottom: 0px;
+  right: 25rem;
+  background-color: #F1AD02;
+  width: 175px;
+  height: 50px;
+  cursor: pointer;
+  border: 4px solid rgb(209, 25, 25);
+  border-radius: 120px;
+}
+.mensaje-sinoInput .fondoInput .btnI-no {
+  position: relative;
+  top: 2rem;
+  left: 14rem;
+  background-color: #F1AD02;
+  width: 175px;
+  height: 50px;
+  cursor: pointer;
+  border: 4px solid rgb(209, 25, 25);
+  border-radius: 120px;
+}
+.mensaje-sinoInput .fondoInput .btnI-si:hover {
+  color: white;
+  background-color: rgb(209, 25, 25);
+  border: 4px solid #F1AD02;
+}
+.mensaje-sinoInput .fondoInput .btnI-no:hover {
   color: white;
   background-color: rgb(209, 25, 25);
   border: 4px solid #F1AD02;
