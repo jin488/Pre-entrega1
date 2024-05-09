@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segunda pre-entrega</title>
-    <link rel="stylesheet" href="./sass/estilo.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segunda pre-entrega</title>
+  <link rel="stylesheet" href="./sass/estilo.css">
 </head>
+
 <body class="bodyIndex">
 
-    <header class="navbar">
-        <div>
-            <header class="cajaPrincipal">
-              <ul class="menu">
-                <li class="enlaces"><a href="./index.html" class="pagina">Ruleta</a></li>
-                <li class="enlaces"><a href="./html/blackjack.html" class="pagina1">BlackJack</a></li>
-                <li class="enlaces"><a href="./html/apuestas.html" class="pagina2">Apuestas</a></li>
-              </ul>
-            </header>
-          </div>
-    </header>
+  <header class="navbar">
+    <div>
+      <header class="cajaPrincipal">
+        <ul class="menu">
+          <li class="enlaces"><a href="./index.html" class="pagina">Ruleta</a></li>
+          <li class="enlaces"><a href="./html/blackjack.html" class="pagina1">BlackJack</a></li>
+          <li class="enlaces"><a href="./html/apuestas.html" class="pagina2">Apuestas</a></li>
+        </ul>
+      </header>
+    </div>
+  </header>
+
+  <!-- BOTONERA -->
 
   <div class="orden">
     <h1 class="titulo">Ruleta de Casino</h1>
@@ -29,7 +33,12 @@
     <section class="caja2">
       <button id="apostar" class="boton2">A P O S T A R</button>
     </section>
+    <section class="caja3">
+      <button id="apostarANumeros" class="boton3">ACTIVAR APUESTA</button>
+    </section>
   </div>
+
+  <!-- FUNCIONES PARA APOSTAR -->
 
   <nav id="apuesta" class="btn-apuesta">
     <div class="fondoA">
@@ -39,39 +48,55 @@
     </div>
   </nav>
 
+    <!-- SELECCIONAR CANRIDAD A APOSTAR -->
+
   <div class="valorApuesta" id="inputApuesta">
     <section class="fondoInput">
       <h4 class="textoInput">Cuanto quieres apostar?</h4>
-    <form action="" id="textoForm" class="formulario">
-      <input type="text" class="escribir" id="dineroDeApuesta">
-      
-      <input type="submit" class="btnI-si" id="siBtnInput" value="SI">
-      <button class="btnI-no" id="noBtnInput"> NO </button>
-    </form>
+      <form action="" id="textoForm" class="formulario">
+        <input type="text" class="escribir" id="dineroDeApuesta">
+        <button class="btnI-si" id="siBtnInput"> SI </button>
+        <button class="btnI-no" id="noBtnInput"> NO </button>
+      </form>
     </section>
-  </div>
 
-  
+    <!-- SELECCIONAR NUMEROS A APOSTAR -->
 
-  <nav id="tirada" class="btn-tirar">
-    <div class="fondo">
-      <p class="texto">Quieres tirar?</p>
-      <button class="btn-si" id="siBtn"> SI </button>
-      <button class="btn-no" id="noBtn"> NO </button>
+    <div class="valorApuestaNumero" id="inputApuestaNumero">
+      <section class="fondoInputN">
+        <label for="numero" class="textoInputN">Ingresa un número:</label>
+        <form action="" id="textoForm" class="formulario">
+          <input type="number" class="escribir" id="numeroInput">
+        </form>
+        <button class="btnN-apostar" id="btnN-apostar">Apostar</button>
+        <button class="btnN-otraApuesta" id="btnN-otraApuesta">Apostar a otro numero</button>
+      </section>
     </div>
-  </nav>
 
-<section class="contenido">
-  <div class="resultados" id="mas-abajo">
-    <p class="unTexto">Ultimos Resultados</p>
-    <ul class="mostrarResultados" id="masAbajo"></ul>
-  </div>
-  <div id="colores" class="numero">
-    <ul class="mostrarNumero" id="abajo"></ul>
-  </div>
-</section>
+    <!-- SIMULADOR DE TIRADA DE RULETA -->
+
+    <nav id="tirada" class="btn-tirar">
+      <div class="fondo">
+        <p class="texto">Quieres tirar?</p>
+        <button class="btn-si" id="siBtn"> SI </button>
+        <button class="btn-no" id="noBtn"> NO </button>
+      </div>
+    </nav>
+
+    <!-- LISTA DE ULTIMOS RESULTADOS DEL SIMULADOR -->
+
+    <section class="contenido">
+      <div class="resultados" id="mas-abajo">
+        <p class="unTexto">Ultimos Resultados</p>
+        <ul class="mostrarResultados" id="masAbajo"></ul>
+      </div>
+      <div id="colores" class="numero">
+        <ul class="mostrarNumero" id="abajo"></ul>
+      </div>
+    </section>
 
     <script src="./js/main.js"></script>
-    
+
 </body>
+
 </html>
