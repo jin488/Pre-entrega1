@@ -1,0 +1,88 @@
+.boton2 {
+    color: #F1AD02;
+    background-color: black;
+    border-radius: 15px;
+    border: 1px solid white;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.caja2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-apuesta {
+    display: none;
+    position: fixed;
+    overflow: auto;
+    z-index: 1;
+    left: 30%;
+    top: 30%;
+    width: 100%;
+    height: 100%;
+}
+
+.mensaje-sinoApuesta {
+    .fondoA {
+        transition: background-color 0.5s, color 0.5s;
+        background-color: rgb(10, 88, 10);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 600px;
+        height: 300px;
+        border-style: dashed;
+        border: 20px inset #F1AD02;
+
+        .textoA {
+            display: flex;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            font-style: oblique;
+            text-transform: uppercase;
+            width: 600px;
+            height: 200px;
+        }
+
+        .btnA-si {
+            position: relative;
+            bottom: 30px;
+            left: 5rem;
+            background-color: #F1AD02;
+            width: 175px;
+            height: 50px;
+            cursor: pointer;
+            border: 4px solid rgb(209, 25, 25);
+            border-radius: 120px;
+        }
+
+        .btnA-no {
+            position: relative;
+            bottom: 67px;
+            left: 20rem;
+            background-color: #F1AD02;
+            width: 175px;
+            height: 50px;
+            cursor: pointer;
+            border: 4px solid rgb(209, 25, 25);
+            border-radius: 120px;
+        }
+
+        .btnA-si:hover {
+            color: white;
+            background-color: rgb(209, 25, 25);
+            border: 4px solid #F1AD02;
+        }
+
+        .btnA-no:hover {
+            color: white;
+            background-color: rgb(209, 25, 25);
+            border: 4px solid #F1AD02;
+        }
+
+    }
+}

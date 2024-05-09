@@ -1,119 +1,7 @@
-//*** MODO DE APOSTAR ***//
-
-const btnApuestas = document.querySelector("#apostar");
-const btnApuesta = document.querySelector("#apuesta");
-
-let moduloPreguntaApuesta = document.getElementById("apuesta");
-
-//*** QUIERES APOSTAR? ***//
-
-btnApuestas.addEventListener("click", abrirPreguntaApuesta)
-
-function abrirPreguntaApuesta() {
-    document.body.classList.add("mensaje-sinoApuesta");
-    moduloPreguntaApuesta.style.display = "block";
-}
-
-function cerrarPreguntaApuesta() {
-    moduloPreguntaApuesta.style.display = "none";
-    document.body.classList.add("mensaje-sinoApuesta");
-}
-
-window.addEventListener("click", function (event) {
-    if (event.target === moduloPreguntaApuesta) {
-        cerrarPreguntaApuesta();
-    }
-});
-
-const siBtnApuesta = document.querySelector("#siBtnApuesta");
-const noBtnApuesta = document.querySelector("#noBtnApuesta");
-
-window.addEventListener("click", function (event) {
-    if (event.target === moduloPreguntaApuesta) {
-        cerrarPreguntaApuesta();
-    }
-});
-
-noBtnApuesta.addEventListener("click", cerrarPreguntaApuesta);
-
-
-siBtnApuesta.addEventListener("click", function () {
-    inputCuantoApuestas();
-    cerrarPreguntaApuestaN();
-});
-
-//*** CUANTO QUIERES APOSTAR? ***//
-
-let quieresApostar = document.getElementById("inputApuesta");
-
-
-function inputCuantoApuestas() {
-    document.body.classList.add("mensaje-sinoInput");
-    quieresApostar.style.display = "block";
-}
-
-const escribirEnForm = document.querySelector("#textoForm");
-
-function montoApuesta() {
-    let escribirEnInput = document.getElementById("dineroDeApuesta").value;
-    
-    if (escribirEnInput !== "") {
-        escribirEnInput = parseFloat(escribirEnInput);
-        localStorage.setItem("valor-monto", escribirEnInput)
-        alert("sos un hdp")
-    } else (escribirEnInput !== Number)
-        alert("sos peor que un hdp")
-    
-    
-    // let devolver = ""
-    // if(numeros123.value.length == Number){
-        //     devolver +=`Apuesta realizada <br>`
-        // } else (numeros123.value.length == String) 
-        //     devolver +=`Por favor ingresa un valor numerico. <br>`
-        
-        console.log(escribirEnInput.value)
-        escribirEnInput.reset();
-        inputAQueNumero();
-    }
-    
-function cerrarPreguntaApuestaN() {
-    moduloPreguntaApuesta.style.display = "none";
-    document.body.classList.add("mensaje-sinoApuestaNumero");
-}
-
-    const siBtnInput = document.getElementById("siBtnInput");
-    const noBtnInput = document.getElementById("noBtnInput");
-    siBtnInput.addEventListener("click", function (){
-    montoApuesta();
-    cerrarPreguntaApuestaN();
-})
-
-noBtnInput.addEventListener("click", cerrarPreguntaApuestaN);
-
-let aQueNumero = document.getElementById("inputApuestaNumero");
-
-function inputAQueNumero() {
-    document.body.classList.add("mensaje-sinoInputNumeros");
-    aQueNumero.style.display = "block";
-}
-
-function funcionApuesta({ apuesta, numero }) {
-
-    // apuesta entre 0 y 36 para la ruleta.
-    if (numero < 0 || numero > 36) {
-        alert("La apuesta no es válida. Debe ser un número entre 0 y 36.");
-        return;
-    }
-
-    if (apuesta <= 0) {
-        alert("La cantidad apostada debe ser mayor que cero.");
-        return;
-    }
-}
-
 let resultados = [];
 
 // Funcion para simular el uso de una ruleta de casino
+// DOM AGREGADO 
 
 function color() {
 
@@ -353,7 +241,6 @@ function mostrarResultados() {
 
     })
 }
-
 
 
 
