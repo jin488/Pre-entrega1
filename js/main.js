@@ -1,7 +1,56 @@
+//*** MODO DE APOSTAR ***//
+
+const btnApuestas = document.querySelector("#apostar");
+const btnApuesta = document.querySelector("#apuesta");
+
+let moduloPreguntaApuesta = document.getElementById("apuesta");
+
+//*** QUIERES APOSTAR? ***//
+
+btnApuestas.addEventListener("click", abrirPreguntaApuesta)
+
+function abrirPreguntaApuesta() {
+    document.body.classList.add("mensaje-sinoApuesta");
+    moduloPreguntaApuesta.style.display = "block";
+}
+
+function cerrarPreguntaApuesta() {
+    moduloPreguntaApuesta.style.display = "none";
+    document.body.classList.add("mensaje-sinoApuesta");
+}
+
+window.addEventListener("click", function (event) {
+    if (event.target === moduloPreguntaApuesta) {
+        cerrarPreguntaApuesta();
+    }
+});
+
+const siBtnApuesta = document.querySelector("#siBtnApuesta");
+const noBtnApuesta = document.querySelector("#noBtnApuesta");
+
+window.addEventListener("click", function (event) {
+    if (event.target === moduloPreguntaApuesta) {
+        cerrarPreguntaApuesta();
+    }
+});
+
+noBtnApuesta.addEventListener("click", cerrarPreguntaApuesta);
+
+
+siBtnApuesta.addEventListener("click", function () {
+    inputCuantoApuestas();
+    cerrarPreguntaApuesta();
+});
+
+
+
+// Funcion para simular el uso de una ruleta de casino 
+
 let resultados = [];
 
-// Funcion para simular el uso de una ruleta de casino
-// DOM AGREGADO 
+let apostarOtroNumero = [];
+
+let unicoValor = [];
 
 function color() {
 
@@ -134,8 +183,13 @@ function color() {
 
     arrayLista.push(" " + resultado.numero)
     resultados.push(resultado);
-    console.log(resultados);    
+    console.log(resultados);
 
+    for (let i = 0; i < apostarOtroNumero.length; i++) {
+        if (numeroAleatorio == apostarOtroNumero[i]) {
+            Swal.fire("Felicidades ganaste" + (unicoValor.forEach * 2));
+        }
+    }
 };
 
 
@@ -191,12 +245,12 @@ function generarNumeros() {
         li.textContent = number.numero + colorObjeto;
         todoAbajo.appendChild(li);
 
-        
-    
+
+
         if (colorObjeto == " rojo") {
-        document.body.classList.add("rojo");
-        document.body.classList.remove("negro");
-        document.body.classList.remove("verde");
+            document.body.classList.add("rojo");
+            document.body.classList.remove("negro");
+            document.body.classList.remove("verde");
         }
 
         if (colorObjeto == " negro") {
@@ -210,7 +264,7 @@ function generarNumeros() {
             document.body.classList.remove("rojo");
             document.body.classList.remove("negro");
         }
-});
+    });
 };
 
 
@@ -218,16 +272,16 @@ let arrayLista = [];
 
 function mostrarResultados() {
     let masAbajo = document.getElementById("masAbajo");
-    
-        
-    arrayLista.forEach( () => {
+
+
+    arrayLista.forEach(() => {
 
 
         const datoJSON = JSON.stringify(arrayLista);
         localStorage.setItem("lista-numeros", datoJSON)
         const arrayEnLocalStorage = localStorage.getItem("lista-numeros")
         const numeros123 = JSON.parse(arrayEnLocalStorage)
-        
+
         masAbajo.innerHTML = "";
 
         if (arrayLista.length > 10) {
@@ -241,6 +295,189 @@ function mostrarResultados() {
 
     })
 }
+
+
+//*** CUANTO QUIERES APOSTAR? ***//
+// ingresar el monto
+
+let quieresApostar = document.getElementById("inputApuesta");
+
+
+function inputCuantoApuestas() {
+    document.body.classList.add("mensaje-sinoInput");
+    quieresApostar.style.display = "block";
+}
+
+const escribirEnForm = document.querySelector("#textoForm");
+
+function montoApuesta() {
+    let escribirEnInput = document.getElementById("dineroDeApuesta").value;
+
+    unicoValor.push(escribirEnInput)
+
+    montoJSON = JSON.stringify(unicoValor);
+    localStorage.setItem("valor-monto", montoJSON);
+    const numeroFinal = localStorage.getItem("valor-monto");
+    const montoFinal = JSON.parse(numeroFinal);
+}
+    
+function cerrarPreguntaApuestaN() {
+    moduloPreguntaApuesta.style.display = "none";
+    document.body.classList.add("mensaje-sinoApuestaNumero");
+}
+
+const siBtnInput = document.querySelector("#siBtnInput");
+const noBtnInput = document.querySelector("#noBtnInput");
+
+siBtnInput.addEventListener("click", () => {
+    montoApuesta();
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "success",
+        title: "Signed in successfully"
+    });
+    cerrarPreguntaApuestaN();
+})
+
+noBtnInput.addEventListener("click", cerrarPreguntaApuestaN);
+
+
+
+// Función para guardar el número en localStorage
+
+// BTN apuesta
+
+
+const btnApostarANumero = document.querySelector("#apostarANumeros");
+
+btnApostarANumero.addEventListener("click", function () {
+    inputAQueNumero();
+    btnApostarANumero.classList.add("activar");
+    btnApostarANumero.innerHTML = "APUESTA  ACTIVADA"
+});
+
+let aQueNumero = document.getElementById("inputApuestaNumero");
+
+function inputAQueNumero() {
+    document.body.classList.add("mensaje-sinoInputNumeros");
+    aQueNumero.style.display = "block";
+}
+
+// Guardar mas de un numero
+
+function multiNumeros() {
+
+    let numeroIngresado = document.getElementById("numeroInput").value;
+
+    // apuesta entre 0 y 36 para la ruleta.
+    if (numeroIngresado < 0 || numeroIngresado > 36) {
+        Swal.fire({
+            title: "La apuesta no es válida. Debe ser un número entre 0 y 36.",
+            color: "green",
+            background: "black"
+        }) 
+        return;
+    }
+
+    let grupoNumeros = {
+        numeros: numeroIngresado
+    }
+
+    apostarOtroNumero.push(grupoNumeros.numeros)
+
+    let unaApuesta = document.getElementById("unaApuesta");
+
+    apostarOtroNumero.forEach(() => {
+
+        numeroJSON = JSON.stringify(apostarOtroNumero);
+        localStorage.setItem("apuesta-numeros", numeroJSON)
+        const numerosEnArray = localStorage.getItem("apuesta-numeros")
+        const muchosNumeros = JSON.parse(numerosEnArray)
+        unaApuesta.innerHTML = "";
+
+        if (apostarOtroNumero.length > 20) {
+            alert("exediste el limite de apuestas")
+        }
+
+        let li = document.createElement("li");
+        li.classList.toggle("listaResultados2");
+        li.textContent = muchosNumeros;
+        unaApuesta.appendChild(li);
+
+    })
+}
+
+// apostar solo a un numero
+
+function cerrarPreguntaApuestaNumeros() {
+
+    let numeroIngresado = document.getElementById("numeroInput").value;
+
+    // apuesta entre 0 y 36 para la ruleta.
+    if (numeroIngresado < 0 || numeroIngresado > 36) {
+        Swal.fire({
+            title: "La apuesta no es válida. Debe ser un número entre 0 y 36.",
+            color: "green",
+            background: "black"
+        }) 
+        return;
+    }
+
+    let grupoNumeros = {
+        numeros: numeroIngresado
+    }
+
+    apostarOtroNumero.push(grupoNumeros.numeros)
+
+    apostarOtroNumero.forEach(() => {
+
+        numeroJSON = JSON.stringify(apostarOtroNumero);
+        localStorage.setItem("apuesta-numeros", numeroJSON)
+        const numerosEnArray = localStorage.getItem("apuesta-numeros")
+        const muchosNumeros = JSON.parse(numerosEnArray)
+
+        unaApuesta.innerHTML = "";
+
+        if (apostarOtroNumero.length > 20) {
+            alert("exediste el limite de apuestas")
+        }
+
+        let li = document.createElement("li");
+        li.classList.toggle("listaResultados2");
+        li.textContent = muchosNumeros;
+        unaApuesta.appendChild(li);
+    })
+
+    
+
+    aQueNumero.style.display = "none";
+    document.body.classList.add("mensaje-sinoInputNumeros");
+};
+
+
+
+// botones para hacer funcionar las apuestas
+
+const btnNApostar = document.querySelector("#btnN-apostar")
+
+btnNApostar.addEventListener("click", cerrarPreguntaApuestaNumeros)
+
+const btnNOtraApuesta = document.querySelector("#btnN-otraApuesta")
+
+btnNOtraApuesta.addEventListener("click", multiNumeros)
+
+
+
 
 
 

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segunda pre-entrega</title>
-    <link rel="stylesheet" href="./sass/estilo.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segunda pre-entrega</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="./sass/estilo.css">
 </head>
+
 <body class="bodyIndex">
 
-    <header class="navbar">
-        <div>
-            <header class="cajaPrincipal">
-              <ul class="menu">
-                <li class="enlaces"><a href="./index.html" class="pagina">Ruleta</a></li>
-                <li class="enlaces"><a href="./html/blackjack.html" class="pagina1">BlackJack</a></li>
-                <li class="enlaces"><a href="./html/apuestas.html" class="pagina2">Apuestas</a></li>
-              </ul>
-            </header>
-          </div>
-    </header>
+  <header class="navbar">
+    <div>
+      <header class="cajaPrincipal">
+        <ul class="menu">
+          <li class="enlaces"><a href="./index.html" class="pagina">Ruleta</a></li>
+          <li class="enlaces"><a href="./html/blackjack.html" class="pagina1">BlackJack</a></li>
+          <li class="enlaces"><a href="./html/apuestas.html" class="pagina2">Apuestas</a></li>
+        </ul>
+      </header>
+    </div>
+  </header>
 
   <div class="orden">
     <h1 class="titulo">Ruleta de Casino</h1>
@@ -31,7 +34,7 @@
     </section>
     <section class="caja3">
       <button id="apostarANumeros" class="boton3">ACTIVAR APUESTA</button>
-  </section>
+    </section>
   </div>
 
   <nav id="apuesta" class="btn-apuesta">
@@ -44,25 +47,26 @@
 
   <div class="valorApuesta" id="inputApuesta">
     <section class="fondoInput">
-        <h4 class="textoInput">Cuanto quieres apostar?</h4>
-        <form action="" id="textoForm" class="formulario">
-            <input type="text" class="escribir" id="dineroDeApuesta">
-            <button class="btnI-si" id="siBtnInput"> SI </button>
-            <button class="btnI-no" id="noBtnInput"> NO </button>
-        </form>
+      <h4 class="textoInput">Cuanto quieres apostar?</h4>
+      <form id="textoForm" class="formulario">
+        <input type="number" class="escribir" id="dineroDeApuesta" placeholder="Min - $50 Max - $5000"
+          -webkit-appearance: none;>
+        <input type="submit" class="btnI-si" id="siBtnInput" value="SI">
+        <button class="btnI-no" id="noBtnInput"> NO </button>
+      </form>
     </section>
   </div>
 
   <div class="valorApuestaNumero" id="inputApuestaNumero">
     <section class="fondoInputN">
-        <label for="numero" class="textoInputN">Ingresa un número:</label>
-        <form action="" id="textoForm" class="formulario">
-            <input type="number" class="escribir" id="numeroInput">
-        </form>
-        <button class="btnN-apostar" id="btnN-apostar">Apostar</button>
-        <button class="btnN-otraApuesta" id="btnN-otraApuesta">Apostar a otro numero</button>
+      <label for="numero" class="textoInputN">Ingresa un número:</label>
+      <form action="" id="textoForm" class="formulario">
+        <input type="number" class="escribir" id="numeroInput">
+      </form>
+      <button class="btnN-apostar" id="btnN-apostar">Apostar</button>
+      <button class="btnN-otraApuesta" id="btnN-otraApuesta">Apostar a otro numero</button>
     </section>
-</div>
+  </div>
 
   <nav id="tirada" class="btn-tirar">
     <div class="fondo">
@@ -72,20 +76,31 @@
     </div>
   </nav>
 
-<section class="contenido">
-  <div class="resultados" id="mas-abajo">
-    <p class="unTexto">Ultimos Resultados</p>
-    <ul class="mostrarResultados" id="masAbajo"></ul>
-  </div>
-  <div id="colores" class="numero">
-    <ul class="mostrarNumero" id="abajo"></ul>
-  </div>
-</section>
+  <section class="contenido">
+    <div class="resultados" id="mas-abajo">
+      <p class="unTexto">Ultimos Resultados</p>
+      <ul class="mostrarResultados" id="masAbajo"></ul>
+    </div>
+    <div id="colores" class="numero">
+      <ul class="mostrarNumero" id="abajo"></ul>
+    </div>
+  </section>
+
+  <section class="contenido1">
+    <div class="numeroSelec" id="mostrando">
+      <p class="unTexto1"> Numeros apostados</p>
+      <ul id="unaApuesta" class="mostrarNumeroApostado"></ul>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <script src="./js/main.js"></script>
-  <script src="./js/sino.js"></script>
-  <script src="./js/numero.js"></script>
-  <script src="./js/monto.js"></script>
-    
+
+
+
 </body>
+
 </html>
