@@ -186,8 +186,11 @@ function color() {
     console.log(resultados);
 
     for (let i = 0; i < apostarOtroNumero.length; i++) {
+
+        const numeroFinal = localStorage.getItem("valor-monto");
+
         if (numeroAleatorio == apostarOtroNumero[i]) {
-            Swal.fire("Felicidades ganaste" + (unicoValor.forEach * 2));
+            Swal.fire("Felicidades ganaste $" + (numeroFinal * 2));
         }
     }
 };
@@ -313,12 +316,40 @@ const escribirEnForm = document.querySelector("#textoForm");
 function montoApuesta() {
     let escribirEnInput = document.getElementById("dineroDeApuesta").value;
 
+    // apuesta entre 0 y 36 para la ruleta.
+    if (escribirEnInput < 500 || escribirEnInput > 5000) {
+        Swal.fire({
+            title: `La cantidad debe estar dentro de los límites.
+                        (Min: $500,00 - Max:$5.000,00)`,
+            color: "rgb(25, 138, 25)",
+            position: "center-top",
+            background: "#3f200f",
+        })
+            return;
+    }else if(escribirEnInput >= 500 || escribirEnInput <= 5000){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "Apuesta realizada",
+            background:"rgb(10, 88, 10)",
+            color: "black"
+        });
+    }
+    
+
     unicoValor.push(escribirEnInput)
 
-    montoJSON = JSON.stringify(unicoValor);
-    localStorage.setItem("valor-monto", montoJSON);
-    const numeroFinal = localStorage.getItem("valor-monto");
-    const montoFinal = JSON.parse(numeroFinal);
+    localStorage.setItem("valor-monto", unicoValor);
 }
     
 function cerrarPreguntaApuestaN() {
@@ -329,23 +360,10 @@ function cerrarPreguntaApuestaN() {
 const siBtnInput = document.querySelector("#siBtnInput");
 const noBtnInput = document.querySelector("#noBtnInput");
 
-siBtnInput.addEventListener("click", () => {
+siBtnInput.addEventListener("click", (e) => {
+    e.preventDefault();
     montoApuesta();
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-    Toast.fire({
-        icon: "success",
-        title: "Signed in successfully"
-    });
+// aka
     cerrarPreguntaApuestaN();
 })
 
@@ -413,7 +431,6 @@ function multiNumeros() {
         li.classList.toggle("listaResultados2");
         li.textContent = muchosNumeros;
         unaApuesta.appendChild(li);
-
     })
 }
 
@@ -440,6 +457,8 @@ function cerrarPreguntaApuestaNumeros() {
     apostarOtroNumero.push(grupoNumeros.numeros)
 
     apostarOtroNumero.forEach(() => {
+
+        let unaApuesta = document.getElementById("unaApuesta");
 
         numeroJSON = JSON.stringify(apostarOtroNumero);
         localStorage.setItem("apuesta-numeros", numeroJSON)
