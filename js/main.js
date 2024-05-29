@@ -187,7 +187,7 @@ function color() {
 
     for (let i = 0; i < apostarOtroNumero.length; i++) {
 
-        const numeroFinal = localStorage.getItem("valor-monto");
+        const numeroFinal = JSON.parse(localStorage.getItem("valor-monto"))
 
         if (numeroAleatorio == apostarOtroNumero[i]) {
             Swal.fire({
@@ -355,24 +355,24 @@ function montoApuesta() {
 
 //*** LOCAL STORAGE ***//
 
-function montoEnLocalStorage (){
+function montoEnLocalStorage() {
 
-let unIngreso = document.getElementById("dineroIngresado");
+    let unIngreso = document.getElementById("dineroIngresado");
 
-unicoValor.forEach(() => {
+    unicoValor.forEach(() => {
 
-    if (unicoValor.length = 1) {
-        localStorage.setItem("valor-monto", JSON.stringify(unicoValor));
-        const montoEnArray = localStorage.getItem("valor-monto")
-        const unicoMonto = JSON.parse(montoEnArray)
-        unIngreso.innerHTML = "";
+        if (unicoValor.length = 1) {
+            localStorage.setItem("valor-monto", JSON.stringify(unicoValor));
+            const montoEnArray = localStorage.getItem("valor-monto")
+            const unicoMonto = JSON.parse(montoEnArray)
+            unIngreso.innerHTML = "";
 
-        let li = document.createElement("li");
-        li.classList.toggle("listaResultados2");
-        li.textContent = unicoMonto;
-        unIngreso.appendChild(li);
-    } 
-})
+            let li = document.createElement("li");
+            li.classList.toggle("listaResultados2");
+            li.textContent = unicoMonto;
+            unIngreso.appendChild(li);
+        }
+    })
 };
 
 function cerrarPreguntaApuestaN() {
@@ -430,32 +430,38 @@ function multiNumeros() {
         numeros: numeroIngresado
     }
 
-    apostarOtroNumero.push(grupoNumeros.numeros)    
+    apostarOtroNumero.push(grupoNumeros.numeros)
 }
 
 //*** LOCAL STORAGE ***//
 
-function numeroLocalStorage (){
 
-let unaApuesta = document.getElementById("unaApuesta");
+function numeroLocalStorage() {
 
-localStorage.setItem("apuesta-numeros", JSON.stringify(apostarOtroNumero));
+    let unaApuesta = document.getElementById("unaApuesta");
 
-apostarOtroNumero.forEach(() => {
+    apostarOtroNumero.forEach(() => {
 
-    const numerosEnArray = localStorage.getItem("apuesta-numeros")
-    const muchosNumeros = JSON.parse(numerosEnArray)
-    unaApuesta.innerHTML = "";
+        if (apostarOtroNumero.length <= 20) {
 
-    if (apostarOtroNumero.length > 20) {
-        alert("exediste el limite de apuestas")
-    }
-
-    let li = document.createElement("li");
-    li.classList.toggle("listaResultados2");
-    li.textContent = muchosNumeros;
-    unaApuesta.appendChild(li);
-})
+            localStorage.setItem("apuesta-numeros", JSON.stringify(apostarOtroNumero));
+            const numerosEnArray = localStorage.getItem("apuesta-numeros")
+            const muchosNumeros = JSON.parse(numerosEnArray)
+            unaApuesta.innerHTML = "";
+            let li = document.createElement("li");
+            li.classList.toggle("listaResultados2");
+            li.textContent = muchosNumeros;
+            unaApuesta.appendChild(li);
+        } else if (apostarOtroNumero.length > 20) {
+            Swal.fire({
+                title: `Numeros Min: 1 - Max: 20`,
+                color: "rgb(25, 138, 25)",
+                position: "center",
+                background: "#3f200f",
+            })
+            return;
+        }
+    })
 }
 
 function cerrarPreguntaApuestaNumeros(e) {
@@ -500,8 +506,19 @@ montoEnLocalStorage();
 numeroLocalStorage();
 mostrarResultados();
 
+//todo: *** boton para reiniciar el simulador ***
 
+const reinicio = document.querySelector("#reiniciar");
 
+reinicio.addEventListener("click", vaciarArrays);
 
-
+function vaciarArrays() {
+    resultados.length = 0;
+    unicoValor.length = 0;
+    apostarOtroNumero = 0
+    apostarOtroNumero = (localStorage.removeItem("apuesta-numeros"))
+    unicoValor = (localStorage.removeItem("valor-monto"))
+    resultados = (localStorage.removeItem("lista-numeros"))
+    location.reload()
+}
 

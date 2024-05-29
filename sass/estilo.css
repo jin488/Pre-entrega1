@@ -100,7 +100,9 @@
 }
 
 .numeroSelec {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   background-color: #F1AD02;
   color: black;
@@ -109,37 +111,51 @@
   width: 700px;
   height: 300px;
   margin-top: 5rem;
+  margin-bottom: 5rem;
   padding-top: 3rem;
   text-transform: uppercase;
   font-size: 35px;
 }
 .numeroSelec .unTexto1 {
-  padding-top: 0.5px;
-  margin-top: 0.5px;
+  margin: 30px;
 }
 .numeroSelec .unTexto2 {
-  padding-top: 0.5px;
-  margin-top: 2rem;
+  margin: 30px;
 }
 .numeroSelec .mostrarNumeroApostado {
   list-style: none;
-  display: inline;
+  margin: 0px;
 }
 .numeroSelec .mostrarMontoApostado {
   list-style: none;
-  display: inline;
+  margin-bottom: 120px;
+  margin-top: 0px;
+}
+.numeroSelec .btnReinicio {
+  color: #F1AD02;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  border: 1px solid white;
+  width: 150px;
+  height: 55px;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .listaResultados {
   display: inline;
-  margin: 100px;
+  margin: 50px;
   width: 100px;
 }
 
 .listaResultados2 {
   display: inline;
-  margin: 100px;
   width: 100px;
+  margin: 30px;
 }
 
 .mostrarResultado {
