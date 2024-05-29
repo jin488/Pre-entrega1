@@ -48,7 +48,7 @@ siBtnApuesta.addEventListener("click", function () {
 
 let resultados = [];
 
-let apostarOtroNumero = [];
+let apostarOtroNumero = JSON.parse(localStorage.getItem("apuesta-numeros")) || [];
 
 let unicoValor = [];
 
@@ -190,7 +190,15 @@ function color() {
         const numeroFinal = localStorage.getItem("valor-monto");
 
         if (numeroAleatorio == apostarOtroNumero[i]) {
-            Swal.fire("Felicidades ganaste $" + (numeroFinal * 2));
+            Swal.fire({
+                imageUrl: "https://static.vecteezy.com/system/resources/previews/024/790/278/non_2x/you-win-banner-winner-congratulations-frame-golden-win-congratulating-framed-sign-and-winning-gold-confetti-illustration-vector.jpg",
+                title: `¡¡Felicidades ganaste $` + (numeroFinal * 2) + "!!",
+                color: "#FFD700",
+                position: "center-top",
+                background: "#000018",
+                confirmButtonText: "Aceptar"
+            });
+
         }
     }
 };
@@ -231,7 +239,6 @@ siBtn.addEventListener("click", function () {
     cerrarPregunta();
 });
 
-
 function generarNumeros() {
 
     let todoAbajo = document.getElementById("abajo");
@@ -271,17 +278,15 @@ function generarNumeros() {
 };
 
 
-let arrayLista = [];
+let arrayLista = JSON.parse(localStorage.getItem("lista-numeros")) || [];
 
 function mostrarResultados() {
     let masAbajo = document.getElementById("masAbajo");
 
+    localStorage.setItem("lista-numeros", JSON.stringify(arrayLista));
 
     arrayLista.forEach(() => {
 
-
-        const datoJSON = JSON.stringify(arrayLista);
-        localStorage.setItem("lista-numeros", datoJSON)
         const arrayEnLocalStorage = localStorage.getItem("lista-numeros")
         const numeros123 = JSON.parse(arrayEnLocalStorage)
 
@@ -325,8 +330,8 @@ function montoApuesta() {
             position: "center-top",
             background: "#3f200f",
         })
-            return;
-    }else if(escribirEnInput >= 500 || escribirEnInput <= 5000){
+        return;
+    } else if (escribirEnInput >= 500 || escribirEnInput <= 5000) {
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -341,17 +346,15 @@ function montoApuesta() {
         Toast.fire({
             icon: "success",
             title: "Apuesta realizada",
-            background:"rgb(10, 88, 10)",
+            background: "rgb(10, 88, 10)",
             color: "black"
         });
     }
-    
-
     unicoValor.push(escribirEnInput)
 
     localStorage.setItem("valor-monto", unicoValor);
 }
-    
+
 function cerrarPreguntaApuestaN() {
     moduloPreguntaApuesta.style.display = "none";
     document.body.classList.add("mensaje-sinoApuestaNumero");
@@ -363,11 +366,14 @@ const noBtnInput = document.querySelector("#noBtnInput");
 siBtnInput.addEventListener("click", (e) => {
     e.preventDefault();
     montoApuesta();
-// aka
-    cerrarPreguntaApuestaN();
 })
 
-noBtnInput.addEventListener("click", cerrarPreguntaApuestaN);
+document.getElementById('textoForm').addEventListener('submit', cerrarPreguntaApuestaN);
+
+noBtnInput.addEventListener("click", (e) => {
+    e.preventDefault();
+    cerrarPreguntaApuestaN();
+});
 
 
 
@@ -378,10 +384,9 @@ noBtnInput.addEventListener("click", cerrarPreguntaApuestaN);
 
 const btnApostarANumero = document.querySelector("#apostarANumeros");
 
-btnApostarANumero.addEventListener("click", function () {
+btnApostarANumero.addEventListener("click", function (e) {
+    e.preventDefault();
     inputAQueNumero();
-    btnApostarANumero.classList.add("activar");
-    btnApostarANumero.innerHTML = "APUESTA  ACTIVADA"
 });
 
 let aQueNumero = document.getElementById("inputApuestaNumero");
@@ -394,16 +399,15 @@ function inputAQueNumero() {
 // Guardar mas de un numero
 
 function multiNumeros() {
-
     let numeroIngresado = document.getElementById("numeroInput").value;
-
+    const number = parseFloat(numeroIngresado)
     // apuesta entre 0 y 36 para la ruleta.
-    if (numeroIngresado < 0 || numeroIngresado > 36) {
+    if (numeroIngresado < 0 || numeroIngresado > 36 || numeroIngresado == "" || isNaN(number) || number % 1 !== 0) {
         Swal.fire({
             title: "La apuesta no es válida. Debe ser un número entre 0 y 36.",
             color: "green",
             background: "black"
-        }) 
+        })
         return;
     }
 
@@ -411,33 +415,35 @@ function multiNumeros() {
         numeros: numeroIngresado
     }
 
-    apostarOtroNumero.push(grupoNumeros.numeros)
-
-    let unaApuesta = document.getElementById("unaApuesta");
-
-    apostarOtroNumero.forEach(() => {
-
-        numeroJSON = JSON.stringify(apostarOtroNumero);
-        localStorage.setItem("apuesta-numeros", numeroJSON)
-        const numerosEnArray = localStorage.getItem("apuesta-numeros")
-        const muchosNumeros = JSON.parse(numerosEnArray)
-        unaApuesta.innerHTML = "";
-
-        if (apostarOtroNumero.length > 20) {
-            alert("exediste el limite de apuestas")
-        }
-
-        let li = document.createElement("li");
-        li.classList.toggle("listaResultados2");
-        li.textContent = muchosNumeros;
-        unaApuesta.appendChild(li);
-    })
+    apostarOtroNumero.push(grupoNumeros.numeros)    
 }
 
-// apostar solo a un numero
+function numeroLocalStorage (){
+    //*** LOCAL STORAGE ***//
 
-function cerrarPreguntaApuestaNumeros() {
+let unaApuesta = document.getElementById("unaApuesta");
 
+localStorage.setItem("apuesta-numeros", JSON.stringify(apostarOtroNumero));
+
+apostarOtroNumero.forEach(() => {
+
+    const numerosEnArray = localStorage.getItem("apuesta-numeros")
+    const muchosNumeros = JSON.parse(numerosEnArray)
+    unaApuesta.innerHTML = "";
+
+    if (apostarOtroNumero.length > 20) {
+        alert("exediste el limite de apuestas")
+    }
+
+    let li = document.createElement("li");
+    li.classList.toggle("listaResultados2");
+    li.textContent = muchosNumeros;
+    unaApuesta.appendChild(li);
+})
+}
+
+function cerrarPreguntaApuestaNumeros(e) {
+    e.preventDefault();
     let numeroIngresado = document.getElementById("numeroInput").value;
 
     // apuesta entre 0 y 36 para la ruleta.
@@ -446,41 +452,10 @@ function cerrarPreguntaApuestaNumeros() {
             title: "La apuesta no es válida. Debe ser un número entre 0 y 36.",
             color: "green",
             background: "black"
-        }) 
+        })
         return;
     }
-
-    let grupoNumeros = {
-        numeros: numeroIngresado
-    }
-
-    apostarOtroNumero.push(grupoNumeros.numeros)
-
-    apostarOtroNumero.forEach(() => {
-
-        let unaApuesta = document.getElementById("unaApuesta");
-
-        numeroJSON = JSON.stringify(apostarOtroNumero);
-        localStorage.setItem("apuesta-numeros", numeroJSON)
-        const numerosEnArray = localStorage.getItem("apuesta-numeros")
-        const muchosNumeros = JSON.parse(numerosEnArray)
-
-        unaApuesta.innerHTML = "";
-
-        if (apostarOtroNumero.length > 20) {
-            alert("exediste el limite de apuestas")
-        }
-
-        let li = document.createElement("li");
-        li.classList.toggle("listaResultados2");
-        li.textContent = muchosNumeros;
-        unaApuesta.appendChild(li);
-    })
-
-    
-
     aQueNumero.style.display = "none";
-    document.body.classList.add("mensaje-sinoInputNumeros");
 };
 
 
@@ -493,7 +468,32 @@ btnNApostar.addEventListener("click", cerrarPreguntaApuestaNumeros)
 
 const btnNOtraApuesta = document.querySelector("#btnN-otraApuesta")
 
-btnNOtraApuesta.addEventListener("click", multiNumeros)
+btnNOtraApuesta.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "success",
+        title: "Numero apostado",
+        background: "rgb(10, 88, 10)",
+        color: "black"
+    });
+    multiNumeros();
+    numeroLocalStorage();
+});
+
+numeroLocalStorage();
+mostrarResultados()
 
 
 

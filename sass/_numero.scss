@@ -3,9 +3,10 @@
     background-color: black;
     border-radius: 15px;
     border: 1px solid white;
-    width: 200px;
-    height: 50px;
+    width: 180px;
+    height: 60px;
     cursor: pointer;
+    font-weight: bold;
 }
 .activar {
     color: white;
@@ -60,7 +61,7 @@
 
         .formulario {
             position: relative;
-            bottom: 40px;
+            bottom: 4rem;
             left: 7rem;
         }
         .escribir {
@@ -73,7 +74,7 @@
 
         .btnN-apostar {
             position: relative;
-            top: 8px;
+            bottom: 25px;
             left: 7rem;
             background-color: #F1AD02;
             width: 175px;
@@ -86,11 +87,11 @@
 
         .btnN-otraApuesta {
             position: relative;
-            bottom: 39px;
-            left: 20rem;
+            top: 84px;
+            right: 11rem;
             background-color: #F1AD02;
-            width: 150px;
-            height: 70px;
+            width: 175px;
+            height: 44px;
             font-weight: bold;
             cursor: pointer;
             border: 4px solid rgb(209, 25, 25);
