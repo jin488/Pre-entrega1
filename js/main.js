@@ -50,7 +50,7 @@ let resultados = [];
 
 let apostarOtroNumero = JSON.parse(localStorage.getItem("apuesta-numeros")) || [];
 
-let unicoValor = [];
+let unicoValor = JSON.parse(localStorage.getItem("valor-monto")) || [];
 
 function color() {
 
@@ -305,7 +305,7 @@ function mostrarResultados() {
 }
 
 
-//*** CUANTO QUIERES APOSTAR? ***//
+//todo: *** APOSTAR ***
 // ingresar el monto
 
 let quieresApostar = document.getElementById("inputApuesta");
@@ -351,14 +351,33 @@ function montoApuesta() {
         });
     }
     unicoValor.push(escribirEnInput)
-
-    localStorage.setItem("valor-monto", unicoValor);
 }
+
+//*** LOCAL STORAGE ***//
+
+function montoEnLocalStorage (){
+
+let unIngreso = document.getElementById("dineroIngresado");
+
+unicoValor.forEach(() => {
+
+    if (unicoValor.length = 1) {
+        localStorage.setItem("valor-monto", JSON.stringify(unicoValor));
+        const montoEnArray = localStorage.getItem("valor-monto")
+        const unicoMonto = JSON.parse(montoEnArray)
+        unIngreso.innerHTML = "";
+
+        let li = document.createElement("li");
+        li.classList.toggle("listaResultados2");
+        li.textContent = unicoMonto;
+        unIngreso.appendChild(li);
+    } 
+})
+};
 
 function cerrarPreguntaApuestaN() {
-    moduloPreguntaApuesta.style.display = "none";
-    document.body.classList.add("mensaje-sinoApuestaNumero");
-}
+    quieresApostar.style.display = "none";
+};
 
 const siBtnInput = document.querySelector("#siBtnInput");
 const noBtnInput = document.querySelector("#noBtnInput");
@@ -366,7 +385,8 @@ const noBtnInput = document.querySelector("#noBtnInput");
 siBtnInput.addEventListener("click", (e) => {
     e.preventDefault();
     montoApuesta();
-})
+    montoEnLocalStorage();
+});
 
 document.getElementById('textoForm').addEventListener('submit', cerrarPreguntaApuestaN);
 
@@ -375,12 +395,7 @@ noBtnInput.addEventListener("click", (e) => {
     cerrarPreguntaApuestaN();
 });
 
-
-
-// Función para guardar el número en localStorage
-
-// BTN apuesta
-
+//todo: *** APOSTAR POR NUMEROS ***
 
 const btnApostarANumero = document.querySelector("#apostarANumeros");
 
@@ -418,8 +433,9 @@ function multiNumeros() {
     apostarOtroNumero.push(grupoNumeros.numeros)    
 }
 
+//*** LOCAL STORAGE ***//
+
 function numeroLocalStorage (){
-    //*** LOCAL STORAGE ***//
 
 let unaApuesta = document.getElementById("unaApuesta");
 
@@ -444,17 +460,6 @@ apostarOtroNumero.forEach(() => {
 
 function cerrarPreguntaApuestaNumeros(e) {
     e.preventDefault();
-    let numeroIngresado = document.getElementById("numeroInput").value;
-
-    // apuesta entre 0 y 36 para la ruleta.
-    if (numeroIngresado < 0 || numeroIngresado > 36) {
-        Swal.fire({
-            title: "La apuesta no es válida. Debe ser un número entre 0 y 36.",
-            color: "green",
-            background: "black"
-        })
-        return;
-    }
     aQueNumero.style.display = "none";
 };
 
@@ -462,11 +467,10 @@ function cerrarPreguntaApuestaNumeros(e) {
 
 // botones para hacer funcionar las apuestas
 
-const btnNApostar = document.querySelector("#btnN-apostar")
-
-btnNApostar.addEventListener("click", cerrarPreguntaApuestaNumeros)
-
+const btnNCancelarApuesta = document.querySelector("#btnN-apostar")
 const btnNOtraApuesta = document.querySelector("#btnN-otraApuesta")
+
+btnNCancelarApuesta.addEventListener("click", cerrarPreguntaApuestaNumeros)
 
 btnNOtraApuesta.addEventListener("click", (e) => {
     e.preventDefault();
@@ -492,8 +496,9 @@ btnNOtraApuesta.addEventListener("click", (e) => {
     numeroLocalStorage();
 });
 
+montoEnLocalStorage();
 numeroLocalStorage();
-mostrarResultados()
+mostrarResultados();
 
 
 

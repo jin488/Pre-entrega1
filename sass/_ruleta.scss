@@ -118,7 +118,17 @@
         margin-top: 0.5px;
     }
 
+    .unTexto2 {
+        padding-top: 0.5px;
+        margin-top: 2rem;
+    }
+
     .mostrarNumeroApostado {
+        list-style: none;
+        display: inline
+    }
+
+    .mostrarMontoApostado {
         list-style: none;
         display: inline
     }

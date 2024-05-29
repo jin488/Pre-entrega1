@@ -117,7 +117,15 @@
   padding-top: 0.5px;
   margin-top: 0.5px;
 }
+.numeroSelec .unTexto2 {
+  padding-top: 0.5px;
+  margin-top: 2rem;
+}
 .numeroSelec .mostrarNumeroApostado {
+  list-style: none;
+  display: inline;
+}
+.numeroSelec .mostrarMontoApostado {
   list-style: none;
   display: inline;
 }
